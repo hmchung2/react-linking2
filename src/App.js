@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+  useHistory,
+  withRouter,
+} from "react-router-dom";
+
+// import Home component
+import Home from "./components/Home";
+// import About component
+import About from "./components/About";
+// import ContactUs component
+import ContactUs from "./components/ContactUs";
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(() => {
+  //   // Update the document title using the browser API
+  // });
+
+  const history = useHistory();
+
+  const goHome = () => {
+    console.log("go home");
+    history.push("/");
+    //history.go(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <button onClick={goHome}>Home</button>
+      </div>
+    </>
   );
 }
 
-export default App;
+export default withRouter(App);
